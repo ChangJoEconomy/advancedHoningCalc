@@ -1,0 +1,392 @@
+body {
+    font-family: 'Roboto', sans-serif; /* 폰트 변경 */
+    background-color: #424242; /* 배경색 변경 */
+    color: #f5f5f5; /* 텍스트 색상 변경 */
+    line-height: 1.6;
+    padding: 0px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1, h2{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+summary {
+    padding: 8px 12px;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+summary:hover {
+    background-color: #666;
+}
+
+.expectationTable {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+input[type="number"] {
+    -webkit-appearance: none; /* Chrome, Safari, Edge, Opera */
+    -moz-appearance: none;    /* Firefox */
+    appearance: none;        /* 표준 속성 (순서 중요!) */
+}
+  
+/* Firefox에서 스피너 버튼 숨기기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield;      /* 표준 속성 */
+}
+
+.inputForm, .outputForm {
+    background-color: rgb(40, 40, 40);
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(255,255,255,0.2);
+    border-radius: 10px;
+    margin: 15px;
+}
+
+#calculateButton {
+    margin-top: 20px;
+    background-color: #449e47;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+#calculateButton:hover {
+    background-color: #004d00;
+}
+
+.invaildAlert {
+    margin: 0;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #ee0000;
+    display:none;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    margin-bottom: 15px;
+}
+
+.gridContainer .inputContainer {
+    margin-right: 0;
+}
+
+.numberInput {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 3px solid white;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    outline: none;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.select {
+    padding: 15px 10px;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    gap: 10px;
+}
+
+.select input[type=radio] {
+    display: none;
+}
+
+.select input[type=radio]+label {
+    flex-grow: 1;
+    flex-basis: 0; /* flex-grow에 의해 너비가 결정되도록 함 */
+    max-width: 50%; /* 최대 너비를 50%로 설정 */
+    display: inline-block;
+    cursor: pointer;
+    height: 34px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    line-height: 34px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
+    margin: 0; /* 마진 제거 */
+}
+
+.select input[type=radio]+label {
+    background-color: #777;
+    color: #333;
+}
+
+.select input[type=radio]+label:hover {
+    background-color: #777;
+    color: #fff;
+}
+
+.select input[type=radio]:checked+label {
+    background-color: rgb(78, 164, 138);
+    color: #fff;
+}
+
+.select input[type="checkbox"] {
+    display: none;
+}
+
+.select input[type="checkbox"] + label {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 50%;
+    display: inline-block;
+    cursor: pointer;
+    height: 34px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    line-height: 34px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    box-sizing: border-box;
+    margin: 0;
+    background-color: #777;
+    color: #333;
+}
+
+.select input[type="checkbox"] + label:hover {
+    background-color: #777;
+    color: #fff;
+}
+
+.select input[type="checkbox"]:checked + label {
+    background-color: rgb(78, 164, 138);
+    color: #fff;
+}
+
+.buttonContainer {
+    display: flex;
+}
+
+.monsterTypeContainer {
+    display: flex;
+    margin-top: 20px;
+}
+
+.monsterTypeContainer label {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    background-color: #777;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.monsterTypeContainer input[type="radio"] {
+    display: none;
+}
+
+.monsterTypeContainer input[type=radio]+label {
+    background-color: #777;
+    color: #333;
+}
+
+.monsterTypeContainer input[type=radio]+label:hover {
+    background-color: #777;
+    color: #fff;
+}
+
+.monsterTypeContainer input[type="radio"]:checked + label {
+    background-color: rgb(78, 164, 138);
+    color: #fff;
+}
+
+
+#expectation {
+    font-size: 40px;
+    margin-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.caution {
+    color: orange;
+    font-size: small;
+}
+
+.exValInputContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-box {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    padding-right: 40px;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    padding: 5px 5px 5px 50px;
+    box-sizing: border-box;
+
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 20px;
+}
+
+/* 오른쪽 입력칸에만 적용되는 스타일 */
+.input-box:last-child input {
+  text-align: left;
+  padding-left: 5px;
+}
+
+.input-box .prefix,
+.input-box .suffix {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #aaa;
+}
+
+.input-box .prefix {
+  left: 10px;
+}
+
+.input-box .suffix {
+  right: 10px;
+}
+
+.swap-icon {
+  font-size: 24px;
+}
+
+@media screen and (max-width: 1040px) {
+    body {
+        flex-direction: column !important;
+    }
+    .inputForm, .outputForm {
+        width: 95% !important;
+        max-width: none !important;
+        margin: 15px auto !important;
+        display: block !important;
+    }
+}
+
+.materialContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 600px;  /* 원하는 최대 높이로 조정 */
+    overflow-y: auto;   /* 내용이 넘칠 경우 수직 스크롤 생성 */
+    padding-right: 10px;/* 스크롤바 공간 확보 (선택 사항) */
+}
+
+.materialBox {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.materialImageContainer {
+    flex-shrink: 0;
+}
+
+.materialImageContainer img {
+    width: 60px; /* 필요한 사이즈로 조정 */
+    height: auto;
+    margin-right: 15px;
+}
+
+.materialImageContainer p.materialName {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #f5f5f5;
+}
+
+.materialInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60px; /* 이미지 높이와 동일하게 설정 */
+}
+
+.materialInputGroup {
+    display: flex;
+    gap: 10px;
+}
+
+.materialInputGroup .numberInput {
+    flex: 1;
+}
+
+.materialHeader {
+    text-align: center;
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.materialBody {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.inputGroupItem {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.inputLabel {
+    font-size: 10px;
+    color: #aaa;
+    margin-bottom: 2px;
+}

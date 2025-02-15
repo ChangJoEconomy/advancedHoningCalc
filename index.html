@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>상급재련 계산기</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="inputForm" id="materialPriceForm">
+        <h1>재료 가격</h1>
+        <p class="caution">API 쌀먹 서버입니다. 가격 수동 입력 요망!</p>
+        <div class="materialContainer">
+            <!-- 명예의파편 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/myeongyeui_pahyeon.png" alt="명예의파편" class="materialImage">
+                        <p class="materialName">명예의파편</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="myeongyeuiPahyeonPrice" class="numberInput" value="0.5166" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="myeongyeuiPahyeonQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 운명의 파편 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/unmyeongui_pahyeon.png" alt="운명의 파편" class="materialImage">
+                        <p class="materialName">운명의 파편</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="unmyeonguiPahyeonPrice" class="numberInput" value="0.0951" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="unmyeonguiPahyeonQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 최상레하 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/chosang_reha.png" alt="최상레하" class="materialImage">
+                        <p class="materialName">최상레하</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="chosangRehaPrice" class="numberInput" value="52.9" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="chosangRehaQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 아비도스 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/abidos.png" alt="아비도스" class="materialImage">
+                        <p class="materialName">아비도스</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="abidosPrice" class="numberInput" value="72.2" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="abidosQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 찬명돌 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/chanmyeongdol.png" alt="찬명돌" class="materialImage">
+                        <p class="materialName">찬명돌</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="chanmyeongdolPrice" class="numberInput" value="28.4" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="chanmyeongdolQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 운명의 돌파석 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/unmyeongdongpaseok.png" alt="운명의 돌파석" class="materialImage">
+                        <p class="materialName">운명의 돌파석</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="unmyeongdongpaseokPrice" class="numberInput" value="24" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="unmyeongdongpaseokQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 정수강 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/jeongsugang.png" alt="정수강" class="materialImage">
+                        <p class="materialName">정수강</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="jeongsugangPrice" class="numberInput" value="0.22" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="jeongsugangQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 운수 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/unsoo.png" alt="운수" class="materialImage">
+                        <p class="materialName">운수</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="unsooPrice" class="numberInput" value="0.27" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="unsooQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 정파강 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/jeongpagang.png" alt="정파강" class="materialImage">
+                        <p class="materialName">정파강</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="jeongpagangPrice" class="numberInput" value="0.77" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="jeongpagangQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 운파 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/unpa.png" alt="운파" class="materialImage">
+                        <p class="materialName">운파</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="unpaPrice" class="numberInput" value="4.04" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="unpaQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 태양의은총 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/taeyangui_eunchong.png" alt="태양의은총" class="materialImage">
+                        <p class="materialName">태양의은총</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="taeyanguiEunchongPrice" class="numberInput" value="18.1" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="taeyanguiEunchongQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 태양의축복 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/taeyangui_chukbok.png" alt="태양의축복" class="materialImage">
+                        <p class="materialName">태양의축복</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="taeyanguiChukbokPrice" class="numberInput" value="36.7" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="taeyanguiChukbokQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 태양의가호 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/taeyangui_gaho.png" alt="태양의가호" class="materialImage">
+                        <p class="materialName">태양의가호</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="taeyanguiGahoPrice" class="numberInput" value="101.1" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="taeyanguiGahoQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 빙하의숨결 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/binghae_sumgyeol.png" alt="빙하의숨결" class="materialImage">
+                        <p class="materialName">빙하의숨결</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="binghaeSumgyeolPrice" class="numberInput" value="148.5" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="binghaeSumgyeolQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 용암의 숨결 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/youngam_sumgyeol.png" alt="용암의 숨결" class="materialImage">
+                        <p class="materialName">용암의 숨결</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="youngamSumgyeolPrice" class="numberInput" value="534.5" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="youngamSumgyeolQuantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 재봉술1단계 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/jaebongsul1.png" alt="재봉술1단계" class="materialImage">
+                        <p class="materialName">재봉술1단계</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="jaebongsul1Price" class="numberInput" value="1770" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="jaebongsul1Quantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 야금술1단계 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/yagemsul1.png" alt="야금술1단계" class="materialImage">
+                        <p class="materialName">야금술1단계</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="yagemsul1Price" class="numberInput" value="2589" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="yagemsul1Quantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 재봉술2단계 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/jaebongsul2.png" alt="재봉술2단계" class="materialImage">
+                        <p class="materialName">재봉술2단계</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="jaebongsul2Price" class="numberInput" value="4188" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="jaebongsul2Quantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 야금술2단계 -->
+            <div class="materialBox">
+                <div class="materialBody">
+                    <div class="materialImageContainer">
+                        <img src="images/yagemsul2.png" alt="야금술2단계" class="materialImage">
+                        <p class="materialName">야금술2단계</p>
+                    </div>
+                    <div class="materialInputGroup">
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">개당 가격</span>
+                            <input type="number" id="yagemsul2Price" class="numberInput" value="10500" min="0">
+                        </div>
+                        <div class="inputGroupItem">
+                            <span class="inputLabel">보유수량</span>
+                            <input type="number" id="yagemsul2Quantity" class="numberInput quantityInput" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inputForm">
+        <h1>상급재련</h1>
+        <p class="caution">스크롤 설정은 3~4단계 재련에서 자동으로 제외됩니다!</p>
+        <p class="caution">1~2단계 재련에서 니베르턴만 숨결 설정은 노숨으로 취급됩니다!</p>
+        <div class="gridContainer">
+            <div class="inputContainer">
+                <label>종류</label>
+                <div class="select">
+                    <input type="radio" id="weapon" name="type" value="weapon"><label for="weapon">무기</label>
+                    <input type="radio" id="armor" name="type" value = "armor" checked="checked"><label for="armor">방어구</label>
+                </div>
+            </div>
+
+            <div class="inputContainer">
+                <label>티어</label>
+                <div class="select">
+                    <input type="radio" id="T3" name="tier" value="T3"><label for="T3">T3</label>
+                    <input type="radio" id="T4" name="tier" value = "T4" checked="checked"><label for="T4">T4</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="gridContainer">
+            <div class="inputContainer">
+                <label>시작 강화 단계</label><input type="number" id="startLevel" class="numberInput" min="0" max="39" value="0">
+                <p id="invaildStartLevel" class="invaildAlert">0~39의 숫자를 입력해야 합니다!</p>
+            </div>
+
+            <div class="inputContainer">
+                <label>목표 강화 단계</label><input type="number" id="targetLevel" class="numberInput" min="1", max="40" value="40"> 
+                <p id="invaildTargetLevel" class="invaildAlert">시작 단계 < [목표 단계] ≤ 40 이여야 합니다!</p>
+
+            </div>
+        </div>        
+
+        <div class="inputContainer">
+            <label>재련가격에 포함시킬 재료</label>
+            <div class="select">
+                <input type="checkbox" id="suhoeSeok" value="0" name="includeMaterial_check" checked="checked" data-english="Suho-seok"/>
+                <label for="suhoeSeok">수호석</label>
+                <input type="checkbox" id="dolpaSeok" value="1" name="includeMaterial_check" checked="checked"/>
+                <label for="dolpaSeok">돌파석</label>
+                <input type="checkbox" id="abidos" value="2" name="includeMaterial_check" checked="checked"/>
+                <label for="abidos">아비도스</label>
+            </div>
+            <div class="select">
+                <input type="checkbox" id="papyeon" value="3" name="includeMaterial_check" checked="checked"/>
+                <label for="papyeon">파편</label>
+                <input type="checkbox" id="sumgyeol" value="4" name="includeMaterial_check" checked="checked"/>
+                <label for="sumgyeol">숨결</label>
+                <input type="checkbox" id="scroll" value="5" name="includeMaterial_check" checked="checked"/>
+                <label for="scroll">스크롤</label>
+            </div>
+        </div>
+
+        <div class="inputContainer">
+            <label>숨결</label>
+            <div class="select">
+                <input type="radio" id="noAdditional" name="additionalMaterial" value="0" checked="checked"><label for="noAdditional">노숨</label>
+                <input type="radio" id="nibereuAdditional" name="additionalMaterial" value = "1"><label for="nibereuAdditional">니베르턴 숨결</label>
+                <input type="radio" id="middleAdditional" name="additionalMaterial" value = "2"><label for="middleAdditional">선조턴 숨결</label>
+                <input type="radio" id="fullAdditional" name="additionalMaterial" value="3"><label for="fullAdditional">풀숨</label>
+            </div>
+        </div>
+
+        <div class="inputContainer">
+            <label>스크롤</label>
+            <div class="select">
+                <input type="radio" id="noScroll" name="scroll" value="0" checked="checked"><label for="noScroll">노스크롤</label>
+                <input type="radio" id="middleScroll" name="scroll" value = "1"><label for="middleScroll">선조턴 스크롤</label>
+                <input type="radio" id="fullScroll" name="scroll" value="2"><label for="fullScroll">풀스크롤</label>
+            </div>
+        </div>
+
+        <div class="inputContainer">
+            <label>시뮬레이션 횟수</label>
+            <input type="number" id="simulationCount" class="numberInput" min="1" value="100000">
+        </div>
+
+        <p id="invaildCalcType" class="invaildAlert">무언가 잘못 되었습니다!</p>
+        
+        <button type="button" id="calculateButton">계산</button>
+    </div>
+    <div class="outputForm">
+        <div class="probabilityContainer">
+            <h2>예상 필요 골드</h2>
+            <p id="expectation">0</p>
+            <details>
+                <summary>기댓값 자세히 보기</summary>
+                <div class="expected-values">
+                    <p class="expectationTable">상위: <span id="resultPercent">0</span>%</p>
+                    <p class="expectationTable">강화 시도 횟수: <span id="tryCount">0</span></p>
+                    <p class="expectationTable">선조의 가호 횟수: <span id="turnCount">0</span></p>
+                    <p class="expectationTable">사용된 실링: <span id="sealingCount">0</span></p>
+                    <table class="materialUsageTable" style="border-spacing: 20px;">
+                        <thead>
+                            <tr>
+                                <th>재료 종류</th>
+                                <th>사용량</th>
+                                <th>구매량</th>
+                                <th>환산 골드</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>누골</td>
+                                <td id="nugolUsed">-</td>
+                                <td id="nugolPurchase">-</td>
+                                <td id="nugolGold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="suhoseokName">수호석</td>
+                                <td id="suhoseokUsed">0</td>
+                                <td id="suhoseokPurchase">0</td>
+                                <td id="suhoseokGold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="dolpaseokName">돌파석</td>
+                                <td id="dolpaseokUsed">0</td>
+                                <td id="dolpaseokPurchase">0</td>
+                                <td id="dolpaseokGold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="abidosName">아비도스</td>
+                                <td id="abidosUsed">0</td>
+                                <td id="abidosPurchase">0</td>
+                                <td id="abidosGold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="pahyeonName">파편</td>
+                                <td id="pahyeonUsed">0</td>
+                                <td id="pahyeonPurchase">0</td>
+                                <td id="pahyeonGold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="additional1Name">숨결1</td>
+                                <td id="additional1Used">0</td>
+                                <td id="additional1Purchase">0</td>
+                                <td id="additional1Gold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="additional2Name">숨결2</td>
+                                <td id="additional2Used">0</td>
+                                <td id="additional2Purchase">0</td>
+                                <td id="additional2Gold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="additional3Name">숨결3</td>
+                                <td id="additional3Used">0</td>
+                                <td id="additional3Purchase">0</td>
+                                <td id="additional3Gold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="scroll1Name">스크롤1</td>
+                                <td id="scroll1Used">0</td>
+                                <td id="scroll1Purchase">0</td>
+                                <td id="scroll1Gold">0</td>
+                            </tr>
+                            <tr>
+                                <td id="scroll2Name">스크롤2</td>
+                                <td id="scroll2Used">0</td>
+                                <td id="scroll2Purchase">0</td>
+                                <td id="scroll2Gold">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+            <p class="caution">기댓값은 시뮬레이션의 최종 사용 골드량의 산술평균으로 계산됩니다!</p>
+        </div>
+        <div>
+            <h2>사용 골드량 분포</h2>
+            <div style="width: 100%;">
+	            <!--차트가 그려질 부분-->
+	            <canvas id="exValChart"></canvas>
+            </div>
+        </div>
+        <div class="exValInputContainer">
+            <div class="input-box">
+                <span class="prefix">상위</span>
+                <input id="exPro" type="text">
+                <span class="suffix">%</span>
+            </div>
+            <span class="swap-icon">=</span>
+            <div class="input-box">
+                <input id="exTrial" type="text">
+                <span class="suffix">골드</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
