@@ -1,0 +1,24 @@
+{
+    "materials": [
+      { "id": "myeongyeuiPahyeon", "name": "명예의파편", "price": 0.5166},
+      { "id": "unmyeonguiPahyeon", "name": "운명의 파편", "price": 0.0951 },
+      { "id": "chosangReha", "name": "최상레하", "price": 52.9 },
+      { "id": "abidos", "name": "아비도스", "price": 72.2 },
+      { "id": "chanmyeongdol", "name": "찬명돌", "price": 28.4 },
+      { "id": "unmyeongdongpaseok", "name": "운명의 돌파석", "price": 24 },
+      { "id": "jeongsugang", "name": "정수강", "price": 0.22 },
+      { "id": "unsoo", "name": "운수", "price": 0.27 },
+      { "id": "jeongpagang", "name": "정파강", "price": 0.77 },
+      { "id": "unpa", "name": "운파", "price": 4.04 },
+      { "id": "taeyanguiEunchong", "name": "태양의은총", "price": 18.1 },
+      { "id": "taeyanguiChukbok", "name": "태양의축복", "price": 36.7 },
+      { "id": "taeyanguiGaho", "name": "태양의가호", "price": 101.1 },
+      { "id": "binghaeSumgyeol", "name": "빙하의숨결", "price": 148.5 },
+      { "id": "youngamSumgyeol", "name": "용암의 숨결", "price": 534.5 },
+      { "id": "jaebongsul1", "name": "재봉술1단계", "price": 1770 },
+      { "id": "yagemsul1", "name": "야금술1단계", "price": 2589 },
+      { "id": "jaebongsul2", "name": "재봉술2단계", "price": 4188 },
+      { "id": "yagemsul2", "name": "야금술2단계", "price": 10500 }
+    ]
+  }
+  
