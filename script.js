@@ -1,3 +1,30 @@
+// 재료가격 정보를 json 기반 업데이트
+document.addEventListener("DOMContentLoaded", function() {
+    // materials.json 파일에서 재료 데이터를 불러옵니다.
+    fetch("materials.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("네트워크 응답에 문제가 있습니다.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // JSON 데이터의 materials 배열을 순회하면서 가격 정보를 업데이트합니다.
+            data.materials.forEach(material => {
+                // 각 재료의 가격 입력 요소의 id는 material.id + "Price"로 구성되어 있습니다.
+                const priceInput = document.getElementById(material.id + "Price");
+                if (priceInput) {
+                    priceInput.value = material.price;
+                } else {
+                    console.warn("입력 요소를 찾을 수 없습니다: " + material.id + "Price");
+                }
+            });
+        })
+        .catch(error => {
+            console.error("재료 정보를 불러오는 중 오류 발생:", error);
+        });
+});
+
 const ctx = document.getElementById('exValChart').getContext('2d');
 const exValChart = new Chart(ctx, {
     type: 'line',
@@ -803,6 +830,7 @@ function calculateTotalGold(materialPrices, result) {
 }
 
 // 계산 버튼 클릭 시 이벤트
+let simulationFinalResults = [];
 document.getElementById("calculateButton").addEventListener("click", function() {
     updateAdvancedRefiningVariables(); // 사용자 입력 강화 설정 적용
     let materialPrices = getMaterialPrice(typeWeapon, itemTier, includeIngredientList); // 재료가격 받아오기
@@ -882,4 +910,81 @@ document.getElementById("calculateButton").addEventListener("click", function() 
     updateResultTableName(typeWeapon, itemTier);
     // 차트값 업데이트
     updateChart(simulationResults);
+    simulationFinalResults = simulationResults;
+    // 결과예측 입력칸 업데이트
+    let setPro = 10;
+    document.getElementById("exPro").value = setPro;
+    const q = setPro / 100;
+    const idx = Math.floor(q * (simulationFinalResults.length - 1));
+    const totalGold = simulationFinalResults[idx][13];
+    document.getElementById("exGold").value = totalGold.toLocaleString();
+});
+
+document.getElementById("exPro").addEventListener("keyup", function() {
+    // 시뮬레이션을 아직 돌리지 않았다면 return
+    if (!simulationFinalResults || simulationFinalResults.length === 0) {
+        document.getElementById("exGold").value = "N/A";
+        return;
+    }
+    
+    const inputVal = document.getElementById("exPro").value;
+    let numericValue;
+
+    // 숫자(정수 또는 실수)인지 체크
+    if (!isNaN(inputVal) && inputVal.trim() !== "") {
+        const regex = /^[+-]?(\d+\.?\d*|\.\d+)$/;
+        if (regex.test(inputVal)) {
+            numericValue = parseFloat(inputVal);
+        }
+    }
+
+    // 입력값이 유효성 검사(0~100 범위 내의 값)
+    if (numericValue !== undefined) {
+        if (numericValue < 0 || numericValue > 100) {
+            document.getElementById("exGold").value = "";
+            return;
+        }
+    } else {
+        document.getElementById("exGold").value = "";
+        return;
+    }
+    
+    // 입력 받은 상위% 값을 simulationFinalResults에서 추출하여 결과 도출
+    const q = numericValue / 100;
+    const idx = Math.floor(q * (simulationFinalResults.length - 1));
+    const totalGold = simulationFinalResults[idx][13];
+    document.getElementById("exGold").value = totalGold.toLocaleString();
+});
+
+document.getElementById("exGold").addEventListener("keyup", function() {
+    // 시뮬레이션을 아직 돌리지 않았다면 return
+    if (!simulationFinalResults || simulationFinalResults.length === 0) {
+        document.getElementById("exPro").value = "N/A";
+        return;
+    }
+
+    const inputVal = document.getElementById("exGold").value;
+    let integerValue; // 정수 값을 저장할 변수
+
+    // 숫자인지 체크
+    if (!isNaN(inputVal) && inputVal.trim() !== "") {
+        // 정규 표현식을 사용해 정수인지 확인
+        const regex = /^[+-]?\d+$/;
+        if (regex.test(inputVal)) {
+            integerValue = parseInt(inputVal, 10); // 문자열을 정수로 변환
+        }
+    }
+
+    // 정수값 유효성 검사
+    if (integerValue == undefined) {
+        document.getElementById("exPro").value = "";
+        return;
+    }
+
+    // 계산값 표시
+    // 입력한 골드보다 같거나 적은 시뮬레이션 결과의 개수를 구합니다.
+    const count = Math.max(1, simulationFinalResults.filter(result => result[13] <= integerValue).length);
+    // 시뮬레이션 결과의 총 개수와 비교하여 백분율을 계산합니다.
+    const percentile = (count / simulationFinalResults.length * 100).toFixed(2);
+    document.getElementById("exPro").value = percentile;
 });
