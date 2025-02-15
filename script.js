@@ -253,7 +253,7 @@ const getRequirements = (isWeapon, tier, phase) => {
                 needAbidos = 19;
                 needPapyeon = 8000;
                 needGold = 2400;
-                needSealing = 60000;
+                needSealing = 60000; // to do: 실링 사용량 확인
             }
         }
     }
@@ -684,18 +684,9 @@ function updateChart(results) {
     exValChart.update();
 }
 
-function updateResultTable(simulationResults, meanGold, materialPrices) {
-    // 기대값과 가장 가까운 시뮬레이션 결과 찾기
-    let closestIndex = -1;
-    let minDiff = Infinity;
-    for (let i = 0; i < simulationResults.length; i++) {
-        let diff = Math.abs(simulationResults[i][13] - meanGold);
-        if (diff < minDiff) {
-            minDiff = diff;
-            closestIndex = i;
-        }
-    }
-    let expectedValue = simulationResults[closestIndex];
+function updateResultTable(simulationResults, materialPrices) {
+    let medianIndex = Math.floor(simulationResults.length / 2);
+    let expectedValue = simulationResults[medianIndex];
     // 기대값 출력
     document.getElementById("expectation").innerText = expectedValue[13].toLocaleString();
     // 결과 테이블 업데이트
@@ -713,7 +704,6 @@ function updateResultTable(simulationResults, meanGold, materialPrices) {
     // expectedValue[11] = 스크롤1단계 소모량
     // expectedValue[12] = 스크롤2단계 소모량
     // expectedValue[13] = 총 사용 골드량
-    document.getElementById("resultPercent").innerText = (closestIndex / simulationResults.length * 100).toFixed(2);
     document.getElementById("tryCount").innerText = expectedValue[0].toLocaleString();
     document.getElementById("turnCount").innerText = expectedValue[1].toLocaleString();
     document.getElementById("sealingCount").innerText = expectedValue[7].toLocaleString();
@@ -863,7 +853,6 @@ document.getElementById("calculateButton").addEventListener("click", function() 
     }
     if(invaildChk) return;
 
-    console.log("설정 유효성 검사 통과");
     // 각 상재 단계별 몇강 해야하는지 계산
     let phase1Levels = 0, phase2Levels = 0, phase3Levels = 0, phase4Levels = 0;
     for(let i=startLv; i<targetLv; ++i) {
@@ -876,8 +865,6 @@ document.getElementById("calculateButton").addEventListener("click", function() 
 
     // 시뮬레이션
     let result;
-    let meanGold = 0;  // 평균 사용 골드량
-    console.log("시뮬레이션 시작");
     // 시뮬레이션 결과값을 저장할 배열
     let simulationResults = [];
     for(let i=0; i<epoch; ++i) {
@@ -887,12 +874,11 @@ document.getElementById("calculateButton").addEventListener("click", function() 
         result.push(totalGold);
         // 시뮬레이션 결과값에 추가
         simulationResults.push(result);
-        meanGold = meanGold + (totalGold - meanGold) / (i + 1);
     }
-    // results 배열의 최종 사용 골드량 기준으로 정렬
+    // 결과를 최종 사용 골드량 기준으로 정렬
     simulationResults.sort((a, b) => a[a.length - 1] - b[b.length - 1]);
     // 기대값 출력
-    updateResultTable(simulationResults, meanGold, materialPrices);
+    updateResultTable(simulationResults, materialPrices);
     updateResultTableName(typeWeapon, itemTier);
     // 차트값 업데이트
     updateChart(simulationResults);
