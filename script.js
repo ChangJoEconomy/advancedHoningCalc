@@ -845,7 +845,7 @@ document.getElementById("calculateButton").addEventListener("click", function() 
         document.getElementById("invaildCalcType").innerText = "3티어 아이템은 20레벨까지만 계산을 지원합니다!";
         invaildChk = true;
     }
-    else if(epoch < 1) {  // to do: 나중에 100으로 바꾸기
+    else if(epoch < 100) {
         document.getElementById("invaildCalcType").style = "display:block";
         document.getElementById("invaildCalcType").innerText = "시뮬레이션 횟수는 100 이상이어야 합니다!";
         document.getElementById("simulationCount").style = "border-bottom: 3px solid #ee0000;";
