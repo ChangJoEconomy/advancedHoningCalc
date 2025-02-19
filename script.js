@@ -280,7 +280,7 @@ const getRequirements = (isWeapon, tier, phase) => {
                 needAbidos = 19;
                 needPapyeon = 8000;
                 needGold = 2400;
-                needSealing = 60000; // to do: 실링 사용량 확인
+                needSealing = 56000;
             }
         }
     }
